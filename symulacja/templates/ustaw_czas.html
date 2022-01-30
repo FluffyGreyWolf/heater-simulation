@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Wybierz o której godzinie piec ma się dopalić: </p>
+    <form action="{% url 'menu' %}" method="POST">{% csrf_token %}
+        <input type="number", name='czas' placeholder="Czas" required max="24" min="1">
+        <input type="submit", name="system" value="Save">
+    </form>
+    <p>Wartość powinna być między 1 - 24</p>
+{% endblock %}

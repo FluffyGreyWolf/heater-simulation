@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    Witamy w aplikacji "piec"<br><br>
+    Przed uruchomieniem aplikacji proszę wprowadzic ponizsze dane konfigurancyjne:<br><br>
+    
+    
+    
+
+    <form action="{% url 'menu' %}" method="POST">{% csrf_token %}
+        <p>
+        Proszę podać powierzchnię pomieszczenia:
+        <input type="number", name='powierzchnia' placeholder="Powierzchnia" required max="100" min="1">
+        </p>
+        <p>
+        Proszę podać wysokość pomieszczenia:
+        <input type="number", name='wysokosc' placeholder="Wysokosc" required max="100" min="1">
+        </p>
+        <p>
+        Proszę podać moc swojego piecyka:
+        <input type="number", name='moc' placeholder="Moc" required max="100" min="1">
+        </p>
+        <input type="submit", name="system" value="Save">
+    </form>
+{% endblock %}

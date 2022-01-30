@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Witamy w aplikacji pieca</p>
+<p>Wprowadzone dane:</p>
+<p>Docelowa temperatura: {{ temperatura_docelowa }} stopni C</p>
+<p>Godzina o której piec powinien nagrzać pomieszczenie: {{ czas }}:00</p>
+<p>Według ustawionych danych czas ogrzewania wyniesie: {{ planowany_czas_grzania_minuty|floatformat }} minut, zużywając {{ zuzycie_pradu|floatformat }} kJ energii.</p>
+<br><br><br>
+<p><a class="link-button" href="{% url 'on' %}">Włącz symulację</a></p>
+
+
+<p><a class="link-button" href="{% url 'configuration' %}">Zmień ustawienia symulacji</a></p>
+
+
+<p><a class="link-button" href="{% url 'temperature' %}">Ustaw docelowa temperaturę</a></p>
+
+
+<p><a class="link-button" href="{% url 'ustaw_czas' %}">Ustaw czas odpalenia pieca</a></p>
+
+
+<p><a class="link-button" href="{% url 'czas' %}">Symulacja odpalenia pieca o danej godzinie</a></p>
+
+
+{% endblock %}

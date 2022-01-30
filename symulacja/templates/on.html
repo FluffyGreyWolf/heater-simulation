@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Planowany czas ogrzewania wynosi: {{ planowany_czas_grzania_minuty|floatformat }} minut i zużyje {{ zuzycie_pradu|floatformat }} kWh energii</p> {{ powierzchnia }}
+
+<p id="text2"></p>
+<p id="text3"></p>
+
+<script>
+    var elapsed = 0;
+    var czas = "{{ planowany_czas_grzania_minuty }}";
+    var sym = "{{ symulacja }}";
+    sym = sym.replace("[", "");
+    sym = sym.replace("]", "");
+    var symar = sym.split(", ");
+    var temp = "Uzyskana temperatura wynosi {{ temperatura_docelowa }} stopni C";
+var x = setInterval(function() {
+
+  document.getElementById("text2").innerHTML = symar[elapsed];
+  elapsed++;
+
+  if (elapsed >= czas) {
+    clearInterval(x);
+    document.getElementById("text2").innerHTML = symar[symar.length-1];
+    document.getElementById("text3").innerHTML = temp;
+    
+  }
+}, 500);
+</script>
+
+<a class="link-button" href="{% url 'menu' %}">Wróć do menu</a>
+
+{% endblock %}

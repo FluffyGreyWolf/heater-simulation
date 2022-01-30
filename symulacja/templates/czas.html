@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Piec odpali się o godzinie {{ czas }}:00</p>
+
+<p id="text"></p>
+<p id="text1"></p>
+<p id="text2"></p>
+<p id="text3"></p>
+
+<script>
+    var elapsed = 0;
+    var czas = "{{ czas }}";
+    var sym = "{{ symulacja }}";
+    sym = sym.replace("[", "");
+    sym = sym.replace("]", "");
+    var symar = sym.split(", ");
+    var temp = "Uzyskana temperatura wynosi {{ temperatura_docelowa }} stopni C";
+var x = setInterval(function() {
+
+  document.getElementById("text").innerHTML = "Aktualna godzina";
+  document.getElementById("text1").innerHTML = elapsed + 1 + ":00";
+  elapsed++;
+
+  if (elapsed == czas) {
+    clearInterval(x);
+    document.getElementById("text3").innerHTML = temp;
+    
+  }
+}, 500);
+</script>
+
+<a class="link-button" href="{% url 'menu' %}">Wróć do menu</a>
+{% endblock %}
+

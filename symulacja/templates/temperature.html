@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Ustaw docelową temperaturę dla pomieszczenia</p>
+    <form action="{% url 'menu' %}" method="POST">{% csrf_token %}
+        <input type="number", name='temperatura_docelowa' placeholder="Temperatura docelowa" required max="60" min="22">
+        <input type="submit", name="system" value="Save">
+    </form>
+    <p>Wartość pomiędzy 22 - 60 stopni</p>
+{% endblock %}
